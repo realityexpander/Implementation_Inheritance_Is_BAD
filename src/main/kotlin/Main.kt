@@ -16,7 +16,7 @@ open class Dog {
 }
 
 /*
-// ...there's trouble in paradise...
+// ...but there's trouble in paradise...
 
 // ⬇︎⚠️ NEW AND IMPROVED DOG (but completely unaware how someone else is using the old implementation)
 open class Dog {
