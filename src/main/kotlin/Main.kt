@@ -17,7 +17,9 @@ open class Dog {
 
 /*
 // ...there's trouble in paradise...
-open class Dog {  // <-- NEW AND IMPROVED DOG (but completely unaware that someone else is using the old implementation)
+
+// ⬇︎⚠️ NEW AND IMPROVED DOG (but completely unaware how someone else is using the old implementation)
+open class Dog {
 	fun bark() {
 		barkMany(1)
 	}
