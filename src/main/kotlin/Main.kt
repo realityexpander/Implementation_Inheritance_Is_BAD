@@ -44,5 +44,6 @@ class VerboseDog: Dog() {
 fun main() {
    val dog = VerboseDog()
 
-	dog.barkMany(3)
+	dog.bark()
+	//dog.barkMany(3)
 }
