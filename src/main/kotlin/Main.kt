@@ -1,16 +1,46 @@
-package org.example
+// Demonstration program to illustrate the problems with implementation inheritance.
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+open class Dog {
+	fun bark() {
+		println("Woof!")
+	}
+
+	open fun barkMany(times: Int) {
+		for (i in 1..times) {
+			bark()
+		}
+	}
+}
+
+/*
+// ...trouble in paradise...
+open class Dog {  // <-- NEW AND IMPROVED DOG (but completely unaware that someone else is using the old implementation)
+	fun bark() {
+		barkMany(1)
+	}
+
+	open fun barkMany(times: Int) {
+		for (i in 1..times) {
+			print("Woof!")
+		}
+	}
+}
+*/
+
+class VerboseDog: Dog() {
+	override fun barkMany(times: Int) {
+		for (i in 1..times) {
+			super.bark()
+		}
+	}
+}
+
+
+fun main() {
+   val dog = VerboseDog()
+
+	dog.barkMany(3)
 }
